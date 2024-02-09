@@ -4,7 +4,7 @@
   "description": "멜론티켓 아이유 콘서트 취소표를 잡아줍니다.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/index.ts"
   },
   "author": "okonomiyakki",
   "license": "ISC",
