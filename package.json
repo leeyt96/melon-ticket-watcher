@@ -1,0 +1,17 @@
+{
+  "name": "melon-ticket-watcher",
+  "version": "1.0.0",
+  "description": "멜론티켓 아이유 콘서트 취소표를 잡아줍니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "okonomiyakki",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
