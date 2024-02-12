@@ -4,11 +4,11 @@ import AppError from '../utils/ErrorHandler';
 export default class Indicator {
   static currentCondition: Partial<Indicator>;
 
-  readonly date: string;
-  readonly targetDate: string[];
-  readonly sections: string[];
-  readonly targetSections: string[];
-  readonly targetAreas: string[];
+  readonly DATE: string;
+  readonly TARGET_DATE: string[];
+  readonly SECTIONS: string[];
+  readonly TARGET_SECTIONS: string[];
+  readonly TARGET_AREAS: string[];
 
   /** 탐색을 희망하는 경우를 담은 경로 변수들입니다. */
   private static date: string = ''; // 예매 날짜
@@ -134,11 +134,11 @@ export default class Indicator {
     }
 
     return this.createCurrentConfig({
-      date: Indicator.date,
-      targetDate: Indicator.targetDate,
-      sections: Indicator.sections,
-      targetSections: Indicator.targetSections,
-      targetAreas: Indicator.targetAreas,
+      DATE: Indicator.date,
+      TARGET_DATE: Indicator.targetDate,
+      SECTIONS: Indicator.sections,
+      TARGET_SECTIONS: Indicator.targetSections,
+      TARGET_AREAS: Indicator.targetAreas,
     });
   }
 }
