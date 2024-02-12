@@ -1,18 +1,18 @@
 import puppeteer, { Browser, Frame, Page } from 'puppeteer';
+import Indicator from './Indicator';
 import EnvConfig from '../configs/EnvConfig';
-import AppError from '../utils/ErrorHandler';
 import PageHandler from '../utils/PageHandler';
 import DelayHandler from '../utils/DelayHandler';
-import Indicator from './Indicator';
+import AppError from '../utils/ErrorHandler';
 
 export default class Approacher {
   constructor(
-    private readonly pageHandler: PageHandler,
-    private readonly delayHandler: DelayHandler,
     private readonly currnetConfig: Partial<Indicator>,
     private readonly urlConfig: Partial<EnvConfig>,
     private readonly pathConfig: Partial<EnvConfig>,
-    private readonly kakaoLoginConfig: Partial<EnvConfig>
+    private readonly kakaoLoginConfig: Partial<EnvConfig>,
+    private readonly pageHandler: PageHandler,
+    private readonly delayHandler: DelayHandler
   ) {}
 
   /** 크롬 테스트 브라우저 */
@@ -28,24 +28,22 @@ export default class Approacher {
   private static reservationPopupPage: Page;
 
   /** 예매 팝업 창 안에있는 iframe */
-  private static oneStopFrame: Frame;
+  static oneStopFrame: Frame;
 
   /**
    * 예매 팝업 창에 들어가서, 그 안에있는 iframe 을 따옵니다.
    *
-   * @returns iframe
+   * @returns oneStopFrame
    */
-  static initFrame() {
-    new Approacher(
-      new PageHandler(),
-      new DelayHandler(),
+  static async initFrame() {
+    await new Approacher(
       Indicator.currentCondition,
       EnvConfig.url,
       EnvConfig.path,
-      EnvConfig.kakaoLogin
+      EnvConfig.kakaoLogin,
+      new PageHandler(),
+      new DelayHandler()
     ).accessOneStopFrame();
-
-    return this.oneStopFrame;
   }
 
   /**
