@@ -1,18 +1,17 @@
+import Indicator from './Indicator';
 import EnvConfig from '../configs/EnvConfig';
 import Approacher from './Approacher';
-import PageHandler from './PageHandler';
 
 /**
- * 정의해놓은 work들을 동작시킵니다.
+ * 정의해놓은 work들을 순서대로 동작시킵니다.
  */
 export default class Runner {
   async run() {
-    EnvConfig.initConfig();
+    /** 탐색 희망 조건을 설정해주세요. */
+    Indicator.initCurrentConditionConfig('4회차', 'R');
 
-    const pageHandler = new PageHandler();
+    EnvConfig.initProcessConfig();
 
-    const approacher = new Approacher(EnvConfig.current, pageHandler);
-
-    approacher.accessPage();
+    const iFrame = Approacher.initFrame();
   }
 }
