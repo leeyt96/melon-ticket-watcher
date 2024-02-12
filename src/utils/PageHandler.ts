@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { Frame, Page } from 'puppeteer';
 
 export default class PageHandler {
   /**
@@ -15,7 +15,7 @@ export default class PageHandler {
    * @param page 현재 페이지
    * @param path 해당 요소 selector 경로
    */
-  async clickElement(page: Page, path: string) {
+  async clickElement(page: Page | Frame, path: string) {
     await page.waitForSelector(path);
 
     await page.click(path);
