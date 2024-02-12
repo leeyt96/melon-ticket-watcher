@@ -9,4 +9,8 @@ export default class AppError extends Error {
   static pageNotFound(message: string) {
     return new AppError(message);
   }
+
+  static badRequest(message: string) {
+    return new AppError(message);
+  }
 }
