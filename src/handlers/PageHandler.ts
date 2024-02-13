@@ -1,4 +1,5 @@
 import { Frame, Page } from 'puppeteer';
+import cheerio from 'cheerio';
 
 export default class PageHandler {
   /**
@@ -12,7 +13,7 @@ export default class PageHandler {
 
   /**
    *
-   * @param page 현재 페이지
+   * @param page 현재 페이지 or 프레임
    * @param path 해당 요소 selector 경로
    */
   async clickElement(page: Page | Frame, path: string) {
@@ -41,5 +42,16 @@ export default class PageHandler {
 
     await page.type(idInputPath, userId);
     await page.type(pwInputPath, userPw);
+  }
+
+  /**
+   *
+   * @param frame 현재 프레임
+   * @returns 현재 프레임의 전체 html 컨텐츠 내용 반환
+   */
+  async loadContent(frame: Frame) {
+    const content = await frame.content();
+
+    return cheerio.load(content);
   }
 }
