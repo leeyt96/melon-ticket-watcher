@@ -1,18 +1,18 @@
 import puppeteer, { Browser, Frame, Page } from 'puppeteer';
-import Indicator from './Indicator';
+import PageHandler from '../handlers/PageHandler';
+import DelayHandler from '../handlers/DelayHandler';
 import EnvConfig from '../configs/EnvConfig';
-import PageHandler from '../utils/PageHandler';
-import DelayHandler from '../utils/DelayHandler';
-import AppError from '../utils/ErrorHandler';
+import Indicator from './Indicator';
+import AppError from '../handlers/ErrorHandler';
 
 export default class Approacher {
   constructor(
-    private readonly currnetConfig: Partial<Indicator>,
+    private readonly pageHandler: PageHandler,
+    private readonly delayHandler: DelayHandler,
     private readonly urlConfig: Partial<EnvConfig>,
     private readonly pathConfig: Partial<EnvConfig>,
     private readonly kakaoLoginConfig: Partial<EnvConfig>,
-    private readonly pageHandler: PageHandler,
-    private readonly delayHandler: DelayHandler
+    private readonly currnetConfig: Partial<Indicator>
   ) {}
 
   /** 크롬 테스트 브라우저 */
@@ -28,23 +28,7 @@ export default class Approacher {
   private static reservationPopupPage: Page;
 
   /** 예매 팝업 창 안에있는 iframe */
-  static oneStopFrame: Frame;
-
-  /**
-   * 예매 팝업 창에 들어가서, 그 안에있는 iframe 을 따옵니다.
-   *
-   * @returns oneStopFrame
-   */
-  static async initFrame() {
-    await new Approacher(
-      Indicator.currentCondition,
-      EnvConfig.url,
-      EnvConfig.path,
-      EnvConfig.kakaoLogin,
-      new PageHandler(),
-      new DelayHandler()
-    ).accessOneStopFrame();
-  }
+  private static oneStopFrame: Frame;
 
   /**
    * 콘서트 예매 시작 페이지에 접속하고, 해당 브라우저 및 페이지를 초기화 합니다.
@@ -184,8 +168,10 @@ export default class Approacher {
 
   /**
    * 예매 팝업 창 안에있는 iframe을 열고, 해당 frame을 초기화 합니다.
+   *
+   * @returns oneStopFrame
    */
-  private async accessOneStopFrame() {
+  async accessOneStopFrame() {
     /** 예매 팝업 창 접속 */
     await this.accessReservationPage();
 
@@ -212,5 +198,7 @@ export default class Approacher {
 
     /** oneStop.htm iframe 초기화 */
     Approacher.oneStopFrame = oneStopFrame;
+
+    return Approacher.oneStopFrame;
   }
 }
