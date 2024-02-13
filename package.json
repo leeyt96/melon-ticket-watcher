@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/cheerio": "^0.22.35",
+    "@types/node-notifier": "^8.0.5",
     "@types/puppeteer": "^7.0.4",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.4.1",
+    "node-notifier": "^10.0.1",
     "puppeteer": "^22.0.0",
     "typescript": "^5.3.3"
   },
