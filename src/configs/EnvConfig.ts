@@ -51,6 +51,19 @@ export default class EnvConfig {
   readonly KAKAO_LOGIN_PW_INPUT: string;
   readonly KAKAO_LOGIN_SUBMIT_BUTTON: string;
 
+  readonly TARGET_TIME_BUTTON: string;
+  readonly TICKET_RESERVATION_BUTTON: string;
+
+  readonly TARGET_SECTION_AREA_NAME_SPAN: string;
+  readonly TARGET_SECTION_AREA_COUNT_STRONG: string;
+
+  readonly SEAT_STOP_FILL_CODE_NONE: string;
+  readonly SEAT_STOP_FILL_CODE_GREY: string;
+  readonly TARGET_SEAT_MAP_SVG: string;
+
+  readonly TARGET_ACTIVE_SEAT_RECT: string;
+  readonly TARGET_SELECT_SEAT_COMPLETE_BUTTON: string;
+
   /** 탐색을 희망하는 모든 경우를 defaultCondition으로 초기화 */
   static initDefaultConditionConfig() {
     this.defaultCondition = EnvConfig.parseDefaultConditionEnv();
@@ -147,6 +160,19 @@ export default class EnvConfig {
       KAKAO_LOGIN_ID_INPUT: process.env.KAKAO_LOGIN_ID_INPUT,
       KAKAO_LOGIN_PW_INPUT: process.env.KAKAO_LOGIN_PW_INPUT,
       KAKAO_LOGIN_SUBMIT_BUTTON: process.env.KAKAO_LOGIN_SUBMIT_BUTTON,
+
+      TARGET_TIME_BUTTON: process.env.TARGET_TIME_BUTTON,
+      TICKET_RESERVATION_BUTTON: process.env.TICKET_RESERVATION_BUTTON,
+
+      TARGET_SECTION_AREA_NAME_SPAN: process.env.TARGET_SECTION_AREA_NAME_SPAN,
+      TARGET_SECTION_AREA_COUNT_STRONG: process.env.TARGET_SECTION_AREA_COUNT_STRONG,
+
+      SEAT_STOP_FILL_CODE_NONE: process.env.SEAT_STOP_FILL_CODE_NONE,
+      SEAT_STOP_FILL_CODE_GREY: process.env.SEAT_STOP_FILL_CODE_GREY,
+      TARGET_SEAT_MAP_SVG: process.env.TARGET_SEAT_MAP_SVG,
+
+      TARGET_ACTIVE_SEAT_RECT: process.env.TARGET_ACTIVE_SEAT_RECT,
+      TARGET_SELECT_SEAT_COMPLETE_BUTTON: process.env.TARGET_SELECT_SEAT_COMPLETE_BUTTON,
     });
   }
 }
