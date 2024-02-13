@@ -1,5 +1,5 @@
 import EnvConfig from '../configs/EnvConfig';
-import AppError from '../utils/ErrorHandler';
+import AppError from '../handlers/ErrorHandler';
 
 export default class Indicator {
   static currentCondition: Partial<Indicator>;
@@ -11,11 +11,21 @@ export default class Indicator {
   readonly TARGET_AREAS: string[];
 
   /** 탐색을 희망하는 경우를 담은 경로 변수들입니다. */
-  private static date: string = ''; // 예매 날짜
-  private static targetDate: string[] = []; // 예매 날짜 버튼 경로
-  private static sections: string[] = []; // 좌석 등급 이니셜
-  private static targetSections: string[] = []; // 예매 날짜에 해당하는 좌석 등급 버튼 경로
-  private static targetAreas: string[] = []; // 예매 날짜에 해당하는 각 좌석 등급 구역의 li 태그 경로
+
+  /** 예매 날짜 */
+  private static date: string = '';
+
+  /** 예매 날짜 버튼 경로 */
+  private static targetDate: string[] = [];
+
+  /** 좌석 등급 이니셜 */
+  private static sections: string[] = [];
+
+  /** 예매 날짜에 해당하는 좌석 등급 버튼 경로 */
+  private static targetSections: string[] = [];
+
+  /** 예매 날짜에 해당하는 각 좌석 등급 구역의 li 태그 경로 */
+  private static targetAreas: string[] = [];
 
   /**
    * 탑색을 희망하는 특정 경우를 currentCondition으로 초기화
@@ -52,7 +62,8 @@ export default class Indicator {
   private static indicateCurrentConditionConfig(DATE_FOR: string, SEARCHING_FOR: string) {
     Indicator.loadDefaultCondition();
 
-    let TARGET_SECTION_LIST: string[] = []; // 좌석 등급
+    /** 좌석 등급 리스트 */
+    let TARGET_SECTION_LIST: string[] = [];
 
     switch (DATE_FOR) {
       case '1회차':
