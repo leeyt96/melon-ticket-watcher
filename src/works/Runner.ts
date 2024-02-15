@@ -13,29 +13,26 @@ import Notifier from './Notifier';
 export default class Runner {
   async run() {
     /**
-     * 탐색 희망 [회차] 및 [좌석 등급]을 설정해주세요.
+     * Notice ) 탐색을 희망하는 [회차] 및 [좌석 등급]을 설정해주세요.
      *
      * [회차] : '1회차', '2회차', '3회차', '4회차'
-     * [등급] : 'RSA', 'RS', 'R'
+     *
+     * [등급] : 'R석', 'S석', 'A석', 'R/S석', 'R/S/A석'
+     *
      */
-    Indicator.initCurrentConditionConfig('4회차', 'RSA');
+    Indicator.initCurrentConditionConfig('4회차', 'R/S석');
 
     /** 경로 변수 초기화 */
     EnvConfig.initProcessConfig();
 
-    /** PageHandler 인스턴스 초기화 */
     const pageHandler = new PageHandler();
 
-    /** DelayHandler 인스턴스 초기화 */
     const delayHandler = new DelayHandler();
 
-    /** Catcher 인스턴스 초기화 */
     const catcher = new Catcher();
 
-    /** Notifier 인스턴스 초기화 */
     const notifier = new Notifier();
 
-    /** Approacher 인스턴스 초기화 */
     const approacher = new Approacher(
       pageHandler,
       delayHandler,
@@ -48,7 +45,6 @@ export default class Runner {
     /** 예매 페이지 접근 */
     const oneStopFrame = await approacher.accessOneStopFrame();
 
-    /** Watcher 인스턴스 초기화 */
     const watcher = new Watcher(
       catcher,
       notifier,
