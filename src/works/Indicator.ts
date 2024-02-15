@@ -107,12 +107,22 @@ export default class Indicator {
     }
 
     switch (SEARCHING_FOR) {
-      case 'R':
+      case 'R석':
         Indicator.sections = [EnvConfig.defaultCondition.SECTION_R];
         Indicator.targetSections = [TARGET_SECTION_LIST[0]];
         Indicator.targetAreas = [EnvConfig.defaultCondition.TARGET_AREA_R];
         break;
-      case 'RS':
+      case 'S석':
+        Indicator.sections = [EnvConfig.defaultCondition.SECTION_S];
+        Indicator.targetSections = [TARGET_SECTION_LIST[1]];
+        Indicator.targetAreas = [EnvConfig.defaultCondition.TARGET_AREA_S];
+        break;
+      case 'A석':
+        Indicator.sections = [EnvConfig.defaultCondition.SECTION_A];
+        Indicator.targetSections = [TARGET_SECTION_LIST[2]];
+        Indicator.targetAreas = [EnvConfig.defaultCondition.TARGET_AREA_A];
+        break;
+      case 'R/S석':
         Indicator.sections = [
           EnvConfig.defaultCondition.SECTION_R,
           EnvConfig.defaultCondition.SECTION_S,
@@ -123,7 +133,7 @@ export default class Indicator {
           EnvConfig.defaultCondition.TARGET_AREA_S,
         ];
         break;
-      case 'RSA':
+      case 'R/S/A석':
         Indicator.sections = [
           EnvConfig.defaultCondition.SECTION_R,
           EnvConfig.defaultCondition.SECTION_S,
